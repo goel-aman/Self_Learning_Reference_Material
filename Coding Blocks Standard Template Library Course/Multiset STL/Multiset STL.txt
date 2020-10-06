@@ -1,0 +1,48 @@
+#include<iostream>
+#include<set>
+using namespace std;
+
+
+int main(){
+	// multiset - that can store multiple elements that have same elements
+	// stored in a specific -> sorted according to internal comparison object
+	// value once inserted can't be modified
+	// associative container -> elments are refered by their value and not by the index
+	// underlying data structure = BST
+	
+	int arr[] = {10,20,30,30,30,30,20,10,10};
+	int n = sizeof(arr)/sizeof(int);
+	multiset<int> m(arr,arr+n);
+	
+	// erase - 20
+	m.erase(20);
+	
+	// insert 80
+	m.insert(80); 
+	
+	// Iterate over the multiset
+	for(int x: m){
+		cout<<x<<',';
+	}
+	cout<<endl;
+	// count
+	m.count(10);
+	cout<< "Count "<<m.count(10)<<endl;
+	
+	//find
+	auto it = m.find(30);
+	cout<<(*it)<<endl;
+	cout<<endl;
+	// Get all elements which are equal to 30
+	pair<multiset<int>::iterator,multiset<int>::iterator> p = m.equal_range(30);
+	for(auto it = p.first;it != p.second;it++){
+		cout<<(*it)<<endl;
+	}
+	
+	cout<<endl;
+	// Lower and UpperBound
+	for(auto it=m.lower_bound(10);it != m.upper_bound(77);it++){
+		cout<<*it<<endl;
+	}
+	return 0;
+}

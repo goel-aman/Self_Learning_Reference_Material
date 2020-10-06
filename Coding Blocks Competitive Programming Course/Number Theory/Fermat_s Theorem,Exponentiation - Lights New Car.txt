@@ -1,0 +1,51 @@
+#include<iostream>
+#define l long long int
+#define MOD 1000000007
+using namespace std;
+
+
+l stringToInt(string a,l m){
+	
+	l ans = 0;
+	for(int i=0;i<a.size();i++){
+		ans = (ans* 10)%m + (a[i]-'0'); 
+		ans = ans %m;		
+	}
+	return ans;
+}
+
+l power(l x,l y,l m){
+	// Base 
+	if(y == 0){
+		return 1;
+	}
+	// Recursioin x^(y/2)
+	l smallPower = power(x,y/2,m);
+	smallPower = smallPower%m;
+	
+	smallPower = (smallPower*smallPower)%m;
+	
+	if(y&1){
+		return (x*smallPower)%m;
+	}
+	return smallPower;
+	
+}
+
+int main(){
+	l t;
+	cin>>t;
+	string a,b;
+	while(t--){
+		cin>>a>>b;
+		
+		// String Into Integers
+		l x = stringToInt(a,MOD);
+		l y = stringToInt(b,MOD-1);
+		
+		// Power x^y 
+		l ans = power(x,y,MOD);
+		cout<<ans<<endl;
+	}
+	return 0;
+}

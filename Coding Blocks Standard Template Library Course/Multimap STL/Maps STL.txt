@@ -1,0 +1,61 @@
+#include<iostream>
+#include<map>
+#include<string>
+using namespace std;
+
+int main(){
+	
+	map<string,int> m;
+	m.insert(make_pair("Mango",100));
+	//Insert
+	pair<string,int> p;
+	p.first = "Apple";
+	p.second = 120;
+	
+	m.insert(p);
+	m["Banana"] = 20;
+	
+	
+	//2. Search 
+	string key;
+	cin>>key;
+	
+	// Updating the price
+	m[key]+=20;
+	
+	
+	auto it = m.find(key);
+	if(it != m.end()){
+		cout<<"Price of "<<key<<" is "<<m[key]<<endl;
+	}else{
+		cout<<"Fruit is not present"<<endl;
+	}
+	
+	m["liichi"] = 60;
+	m["pineapple"] = 80;
+	// Iterate over all the key value pairs
+	for(auto it=m.begin();it!=m.end();it++){
+		cout<<it->first<<" and "<<it->second<<endl;// key will be printed lexographically
+	}	
+	
+	// for each loop
+	for(auto p:m){
+		cout<<p.fist<<" : "<<p.second<<endl;// lexographicall order
+	}
+	
+	
+	//3 Erase
+	m.erase(key);
+	
+	//update the price
+	
+	
+	// another way to find a particular key
+	// it stores unique keys only once
+	if(m.count(key)){
+		cout<<"price of is"<<m[key]<<endl;
+	}else{
+		cout<<"Not found"<<endl;
+	}
+	return 0;
+}

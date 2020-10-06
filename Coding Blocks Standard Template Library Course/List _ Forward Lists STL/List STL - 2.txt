@@ -1,0 +1,79 @@
+#include<iostream>
+#include<bits/stdc++.h>
+#include<list>  
+using namespace std;
+
+int main(){
+	list<int> l;
+	// Initialisation
+	list<int> l1{1,2,3,4,5,6};
+	
+	// Different Datatypes
+	list<string> l2{"apple","guava","mango","banana"};
+	l2.push_back("pineapple");
+	
+	// sorting in list
+	l2.sort();
+	
+	// reversing a list
+	l2.reverse();
+	
+	// pop_front // removing the element from the front
+	cout<<l2.front()<<endl;
+	l2.pop_front();
+	
+	// add to the front the list
+	l2.push_front("kiwi");
+	cout<<l2.back()<<endl;
+	l2.pop_back();
+	
+	// iterating over the list using iterator
+	for(auto it=l2.begin();it != l2.end();it++){
+		cout<<(*it)<<" --> ";
+	}
+	cout<<endl;
+	
+	// iterate over the list and print the data
+	for(string s: l2){
+		cout<<s<<"--> ";
+	}
+	cout<<endl;
+	// some more functions int the list
+	l2.push_back("orange");
+	l2.push_back("guava");
+	
+	
+	for(string s: l2){
+		cout<<s<<" --> ";
+	}
+	cout<<endl;
+	// remove a fruit by value (all the occurence will be remvoed)
+	string f;
+	cin>>f;
+	l2.remove(f);
+	for(string s: l2){
+		cout<<s<<"--> ";
+	}
+	cout<<endl;
+	// erase one or more elements
+	auto it = l2.begin(); // you cannot directly add 2 
+	it++;
+	it++;
+	l2.erase(it);
+	
+	for(string s: l2){
+		cout<<s<<"--> ";
+	}
+	cout<<endl;
+	
+	
+	// we can insert elements in the list
+	it = l2.begin();
+	it++;
+	l2.insert(it,"friut juice");
+	
+	for(string s: l2){
+		cout<<s<<" --> ";
+	}
+	cout<<endl;
+}

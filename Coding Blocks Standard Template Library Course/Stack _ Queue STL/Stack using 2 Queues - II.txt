@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+#include<iostream>
+#include<queue>
+using namespace std;
+
+template<typename T> 
+class Stack{
+	queue<T> q1,q2;
+	
+	public:
+		void push(T x){
+			q1.push(x);
+		}
+		
+		void pop(){
+			// remove the last added element form q1
+			// we have to move first n- 1 elements in q2
+			// interchange the names of q1 and q2
+			if(q1.empty()){
+				return ;
+			}
+			while(q1.size() > 1){
+				T elem = q1.front();
+				q2.push(elem);
+				q1.pop();
+			}
+			// or use swap operation swap(q1,q2)
+			q1.pop();
+			queue<T> temp = q1;
+			q1 = q2; 
+			q2 = temp;
+		}
+		
+		T top(){
+			while(q1.size() > 1){
+				T elem = q1.front();
+				q2.push(elem);
+				q1.pop();
+			}
+			T elem = q1.front();
+			q1.pop();
+			q2.push(elem);
+			swap(q1,q2);
+			return elem;
+			
+		}
+		int size(){
+			return q1.size() + q2.size();
+		}
+		
+		bool empty(){
+			return (size() == 0);
+		}
+};
+
+int main(){
+	Stack<int> s;
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	
+	while(!s.empty()){
+		cout<<s.top()<<endl;
+		s.pop();		
+	}
+}

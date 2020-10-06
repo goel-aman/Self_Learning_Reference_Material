@@ -1,0 +1,44 @@
+#include<iostream>
+#include<bits/stdc++.h>
+#define l long long int
+using namespace std;
+
+int gcd(int a,int b){
+	// Base Case
+	if(b == 0){
+		return a;
+	}
+	
+	// Recursive case
+	return gcd(b,a%b);
+}
+
+int lcm(int a,int b){
+	return a*b/gcd(a,b);
+}
+int x,y,GCD;
+void extendedEuclidMethod(int a,int b){
+	// Base Case
+	if(b == 0){
+		GCD = a;
+		x = 1;
+		y = 0;
+		return ;
+	}
+	
+	extendedEuclidMethod(b,a%b);
+	int cx = y;
+	int cy = (x - ((a/b)*y));
+	x = cx;
+	y = cy;
+}
+
+int main(){
+	cout<<gcd(10,15)<<endl;
+	cout<<gcd(14,10)<<endl;
+	
+	// 18X + 30Y = 6 // Solution 
+	extendedEuclidMethod(18,30);
+	cout<<x<<","<<y<<endl;
+	return 0;
+}

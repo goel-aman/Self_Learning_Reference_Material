@@ -1,0 +1,61 @@
+#include<iostream>
+#include<bits/stdc++.h>
+#define l long long int
+using namespace std;
+
+
+// Naieve Approach O(N)
+bool isPrime(l n){
+	if(n == 1) {
+		return false;
+	}
+	
+	if(n == 2){
+		return true;
+	}
+	
+	for(int i=2;i<n;i++){
+		if(n%i == 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+ //Sieve Approach - Generate a array containing prime numbers 
+void prime_sieve(l *p,l n){
+	 // first mark all odd number's prime
+	 for(l i=3;i<=n;i+=2){
+	 	p[i] = 1;
+	 }
+	  
+	 // Sieve
+	 for(l i=3;i<=n;i+=2){
+	 	// if current number is not marked (it is prime)
+	 	if(p[i] == 1){
+	 		// mark all the multiple of i as not prime
+	 		for(l j=i*i;j<=n;j=j+i){
+	 			p[j] = 0;
+			 }
+		 }
+	 }
+	 // special case
+	 p[2] = 1;
+	 p[1] = 0;
+	 p[0] = 0;
+}
+
+
+int main(){
+	l n;
+	cin>>n;
+	l p[n+1] = {0};
+	prime_sieve(p,n);
+	// let print primes upto range n
+	for(l i=0;i<=n;i++){
+		if(p[i] == 1){
+			cout<<i<<" ";
+		}
+	}
+	return 0;
+}

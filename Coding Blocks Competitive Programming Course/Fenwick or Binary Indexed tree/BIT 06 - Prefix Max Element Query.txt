@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+int a[10000];
+int BIT[1000] = {0};
+
+// Range Sum Query
+// Log (n) Time complexity
+void update(int i,int inc,int N){
+	while(i<=N){
+		BIT[i] = max(BIT[i],inc);
+		i += (i & (-i));
+	}
+}
+
+// Sum till the ith index - log(N)
+int query(int i){
+	int ans = 0;
+	while(i > 0){
+		ans = max(BIT[i],ans);
+		i -= (i & (-i));
+	}
+	return ans;
+}
+
+int main(){
+	int n;
+	cin>>n;
+	// build the BIt
+	for(int i=1;i<=n;i++){
+		cin>>a[i];
+		update(i,a[i],n);
+	}
+	
+	// query
+	int q;
+	cin>>q;
+	while(q--){
+		int idx;
+		cin>>idx;
+		cout<<query(idx);
+	}
+	return 0;
+}

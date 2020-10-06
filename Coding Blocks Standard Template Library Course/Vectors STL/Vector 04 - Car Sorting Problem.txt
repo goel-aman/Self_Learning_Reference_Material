@@ -1,0 +1,57 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+class Car{
+	
+	public: 
+	string name;
+	int x;
+	int y;
+	
+	Car(){
+		
+	}
+	
+	Car(string m,int o,int p){
+		this->name = m;
+		this->x = o;
+		this->y = p;
+	}
+	
+	int dist(){
+		return x*x + y*y;
+	}
+};
+
+bool compare(Car p1,Car p2){
+	
+	if(p1.dist() == p2.dist()){
+		return p1.name < p2.name;
+	}
+	
+	return p1.dist() < p2.dist();
+}
+
+int main(){
+	
+	vector<Car> v;
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++){
+		int x,y;
+		string name;
+		cin>>name>>x>>y;
+		Car temp(name,x,y);
+		v.push_back(temp);
+	}
+	
+	sort(v.begin(),v.end(),compare);
+	
+	for(int i=0;i<v.size();i++){
+		Car temp = v[i];
+		cout<<temp.name<<" " << temp.x <<" "<< temp.y<<endl;
+	}
+	return 0;
+}

@@ -1,0 +1,38 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int x,y,GCD;
+void extendedEuclidean(int a, int b){
+	if(b == 0){
+		 x = 1;
+		 y = 0;
+		 GCD = a;
+		 return ;
+	}
+	// Recursion Case
+	extendedEuclidean(b,a%b);
+	int cx = y;
+	int cy = x - (a/b)*y;
+	//cout<<cx<<","<<cy<<endl;
+	
+	x = cx;
+	y = cy;
+}
+// Assume the inverse exit
+int inverseModulo(int a,int m){
+	if(gcd(a,m) == 1){
+		extendedEuclidean(a,m);
+		return (x+m)%m;
+	}
+}
+
+
+int main(){
+//	cout<<gcd(10,15)<<endl;
+//	cout<<gcd(14,18)<<endl;
+	
+	cout<<inverseModulo(6,7)<<endl;
+	
+	return 0;
+}

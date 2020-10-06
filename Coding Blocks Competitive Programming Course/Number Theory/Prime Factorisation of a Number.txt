@@ -1,0 +1,72 @@
+#include<iostream>
+#include<string.h>
+#include<vector>
+#define l long long int
+using namespace std;
+
+
+vector<l> primeSieve(l* p,l n){
+	p[0] = p[1] = 0;
+	p[2] = 1;
+	
+	// let us mark all odd Numbers as Prime (Initialization)
+	for(l i=3;i<=n;i+=2){
+		p[i] = 1;
+	}
+	
+	for(l i=3;i<=n;i+=2){
+		if(p[i]){
+			for(l j=i*i;j<=n;j+=i){
+				p[j] = 0;
+			}
+		}
+	}
+	
+	vector<l> prime;
+	prime.push_back(2);
+	for(l j=3;j<=n;j+=2){
+		if(p[j]){
+			prime.push_back(j);
+		}
+	}
+	return prime;
+}
+
+// this returns a vector of prime factors
+vector<l> factorize(l m,vector<l> &primes){
+	vector<l> factors;
+	factors.clear();
+	
+	l i=0;
+	l p = primes[i];
+	while(p*p <= m){
+		if(m%p == 0){
+			factors.push_back(p);
+			while(m%p == 0){
+				m = m / p;
+			}
+		}
+		i++;
+		p = primes[i];
+	}
+	// one last check for a prime
+	if( m != 1){
+		factors.push_back(m);
+	}
+	return factors;
+}
+
+int main(){
+	l n = 100;
+	l* p = new l[n+1];
+	memset(p,0,sizeof(p));
+	vector<l> primes = primeSieve(p,n);
+	l no;
+	cin>>no;
+	
+	vector<l> factors = factorize(no,primes);
+	for(auto f:factors){
+		cout<<f<<" "<<endl;
+	}
+	return 0;
+}

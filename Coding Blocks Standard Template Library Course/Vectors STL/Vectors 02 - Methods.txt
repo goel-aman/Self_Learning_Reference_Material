@@ -1,0 +1,79 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main(){
+	
+	// you can create and initialize a vector
+	
+	vector<int> d{1,2,3,10,14};
+	// Push Back O(1) for most of the time 
+	d.push_back(16);
+	//remove the last element
+	d.pop_back();
+	
+	// insert some element in the middle complexity O(N)
+	d.insert(d.begin()+3,100);
+	
+	d.insert(d.begin()+3,3,100);
+	
+	// erase some element in the middle
+	d.erase(d.begin()+3);
+	
+	d.erase(d.begin()+2,d.begin()+5);
+	
+	//size 
+	
+	cout<<d.size()<<endl;
+	cout<<d.capacity()<<endl;
+	
+	// we avoid the shrink
+	d.resize(18); // if the size is increasing then more memory will be allocated
+	cout<<d.capacity()<<endl;
+	
+	// remove all the element of the vector, doesnot delete the memory occupied by the array
+	d.clear();
+	cout<<d.size()<<endl;
+	cout<<d.capacity()<<endl;
+	
+	
+	// empty
+	if(d.empty()){
+		cout<<"This is an empty vector";
+	}
+	
+	cout<<d.size()<<endl;
+	
+	
+	for(int x:d){
+		cout<<x<<",";
+	}
+	d.push_back(10);
+	d.push_back(11);
+	d.push_back(12);
+	
+	cout<<d.front()<<endl;
+	cout<<d.back()<<endl;
+	
+	// Reserve 
+	
+	int n;
+	cin>>n;
+	vector<int> v;
+	v.reserve(1000);
+	// to avoid doubling , we will use reserve function 
+	for(int i=0;i<n;i++){
+		int no;
+		cin>>no;
+		v.push_back(no);
+		cout<<"Capacity"<<v.capacity()<<endl;
+	}
+	cout<<"Capacity"<<v.capacity()<<endl;
+	for(int x:v){
+		cout<<x<<",";
+	}
+	
+	
+
+	return 0;
+}

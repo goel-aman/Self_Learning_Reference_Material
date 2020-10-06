@@ -1,0 +1,45 @@
+#include<iostream>
+#include<climits>
+#include<bits/stdc++.h>
+#define l long long int
+#define ul unsigned long long int
+using namespace std;
+
+
+int minCoins(int n,int t,int coins[],int*dp){
+	// Base Case
+	if(n == 0){
+		return 0;
+	}
+	
+	// Look up
+	if(dp[n] != 0){
+		return dp[n];
+	}
+	
+	// REc Case
+	int ans = INT_MAX;
+	for(int i=0;i<t;i++){
+		if(n-coins[i]>=0){
+			int subprob = minCoins(n-coins[i],t,coins,dp) + 1;
+			ans = min(ans,subprob);
+		}
+		
+	}
+	dp[n] = ans;
+	return ans;
+	
+}
+
+int main(){
+	int n = 15;
+	int coins[] = {1,7,10};
+	int *dp = new int[100];
+	for(int i=0;i<100;i++){
+		dp[i] = 0;
+	}
+
+	int t = sizeof(coins)/sizeof(int);
+	cout<<minCoins(n,t,coins,dp)<<endl;
+	return 0;
+}

@@ -1,0 +1,41 @@
+#include<iostream>
+#include<list>  
+using namespace std;
+
+int main(){
+	list<int> l;
+	// Initialisation
+	list<int> l1{1,2,3,4,5,6};
+	
+	// Different Datatypes
+	list<string> l2{"apple","guava","mango","banana"};
+	l2.push_back("pineapple");
+	
+	// sorting in list
+	l2.sort();
+	
+	// reversing a list
+	l2.reverse();
+	
+	// pop_front // removing the element from the front
+	cout<<l2.front()<<endl;
+	l2.pop_front();
+	
+	// add to the front the list
+	l2.push_front("kiwi");
+	cout<<l2.back()<<endl;
+	l2.pop_back();
+	
+	// iterating over the list using iterator
+	for(auto it=l2.begin();it != l2.end();it++){
+		cout<<(*it)<<" --> ";
+	}
+	cout<<endl;
+	
+	// iterate over the list and print the data
+	for(string s: l2){
+		cout<<s<<"--> ";
+	}
+	
+	
+}
