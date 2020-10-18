@@ -38,6 +38,7 @@ int main(){
         cin>>a[i].first;
         a[i].second = i;
     }
+    //nlog(n)
     sort(a, a + n);
     fenwick tree;
     tree.init(n);
@@ -47,16 +48,22 @@ int main(){
 
     int dp[n];
 
+    // O(n)
     for(int i=0;i<n;i++){
         int val = a[i].first;
         int index = a[i].second;
+        // query log(n)
         dp[index] = tree.query(index - 1) + 1;
+        // update log(n)
         tree.update(index,dp[index]);
     }
-
+    int lis = 0;
     for(int i=0;i<n;i++){
         cout<<dp[i]<<" ";
+        lis = max(lis,dp[i]);
     }
+    cout<<endl;
+    cout<<lis<<endl;
     cout<<"\n";
     return 0;
 }
