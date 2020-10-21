@@ -22,7 +22,7 @@ struct fenwick{
     int query(int x){
         x++; // 1 based indexing
         int res = 0;
-        while(x){
+        while(x){ 
             res = max(res,f[x]);
             x -= (x & (-x));
         }
@@ -48,7 +48,7 @@ int main(){
 
     int dp[n];
 
-    // O(n)
+    // O(n) 
     for(int i=0;i<n;i++){
         int val = a[i].first;
         int index = a[i].second;
