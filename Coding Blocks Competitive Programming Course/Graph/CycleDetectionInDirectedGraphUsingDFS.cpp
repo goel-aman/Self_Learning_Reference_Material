@@ -41,7 +41,7 @@ class Graph{
                 bool ans = dfs(i,visited,track);
                 if(ans == true){
                     return true;
-                }
+                } 
             }
         }
         return false;
@@ -57,7 +57,7 @@ int main(){
     g.addEdge(4,5);
     g.addEdge(1,5);
     g.addEdge(5,6);
-    g.addEdge(4,2); // back edge.
+    // g.addEdge(4,2); // back edge.
     bool a = g.contains_cycle();
     cout<<a<<endl;
 }
