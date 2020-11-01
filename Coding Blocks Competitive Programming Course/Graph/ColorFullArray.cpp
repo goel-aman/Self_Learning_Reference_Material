@@ -22,7 +22,7 @@ class dsu
         return par[x] = get(par[x]);
     }
 
-    int unit(int x, int y){
+    void unit(int x, int y){
         x = get(x);
         y = get(y);
 
@@ -30,7 +30,6 @@ class dsu
             par[x] = max(par[x],par[y]);
             par[y] = max(par[x],par[y]);
         }
-        return par[x];
     }
 
 };
