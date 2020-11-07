@@ -21,8 +21,34 @@ int main(){
             m.insert(net[i]);
         }
     }
-    
 
+    // Pop out two person (left&& right) and try to settle them
+    int cnt = 0;
+    while(!m.empty()){
+        auto low = m.begin();
+        auto high = prev(m.end());
+        int debit = *low;
+        int credit = *high;
 
+        // Erase
+        m.erase(low);
+        m.erase(high);
+
+        // settlement
+        int settlement_amount = min(-debit,credit);
+        cnt++;
+        // settlment_amount from donor to acceptor
+        debit += settlement_amount;
+        credit -= settlement_amount;
+        
+        if(debit != 0){
+            m.insert(debit);
+        }
+        if(credit != 0){
+            m.insert(credit);
+        }
+    }
+
+    cout<<cnt<<endl;
     return 0;
 }
