@@ -19,6 +19,21 @@ int firstOcc(int * a, int n , int key){
     return i + 1;
 }
 
+// Different Style of writing the same function
+
+int linearSearch(int * a, int i,int n,int key){
+    // base case
+    if( i == n){
+        return -1;
+    }
+
+    // rec case
+    if(a[i] == key){
+        return i;
+    }
+
+    return linearSearch(a,i+1,n,key);
+}
 
 int main(){
     int arr[] = {1,2,3,7,4,5,6,7,10};
