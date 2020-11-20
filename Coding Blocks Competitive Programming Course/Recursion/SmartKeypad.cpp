@@ -4,6 +4,11 @@ using namespace std;
 
 string table[] = {" ",".+@$","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
 
+string searchIn [] = {
+            "prateek", "sneha", "deepak", "arnav", "shikha", "palak",
+            "utkarsh", "divyam", "vidhi", "sparsh", "akku"
+    };
+
 void solve(string input,string out){
     if(input.length() == 0){
         cout<<out<<endl;
