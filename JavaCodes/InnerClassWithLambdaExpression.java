@@ -1,9 +1,15 @@
 public class InnerClassWithLambdaExpression {
     public static void main(String[] args){
-        B obj = new B(){
-            public void show(){
-                System.out.println("Hello");
-            }
+        // B obj = new B(){
+        //     public void show(){
+        //         System.out.println("Hello");
+        //     }
+        // };
+
+        // Alternatively
+
+        B obj = () -> {
+            System.out.println("Hello");
         };
         obj.show();
     }
