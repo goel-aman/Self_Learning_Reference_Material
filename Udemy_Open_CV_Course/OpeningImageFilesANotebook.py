@@ -70,3 +70,11 @@ plt.show()
 print(type(fix_img))
 
 cv2.imwrite('reversed.jpg',fix_img)
+
+
+fig = plt.figure(figsize=(10,8))
+ax = fig.add_subplot(111)
+ax.imshow(fix_img)
+plt.show()
+
+
