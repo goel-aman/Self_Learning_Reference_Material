@@ -65,3 +65,10 @@ display_img(black_noise_img)
 
 closing = cv2.morphologyEx(black_noise_img,cv2.MORPH_CLOSE,kernel)
 display_img(closing)
+
+
+img = load_img()
+display_img(img)
+
+gradient = cv2.morphologyEx(img,cv2.MORPH_GRADIENT,kernel)
+display_img(gradient)
